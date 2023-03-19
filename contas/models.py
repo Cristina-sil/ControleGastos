@@ -13,7 +13,7 @@ class Transacao(models.Model):
     data_transacao = models.DateTimeField(auto_now_add=False)
     descricao = models.TextField()
     valor = models.DecimalField(max_digits=7, decimal_places=2)
-    observacoes = models.TextField()
+    observacoes = models.TextField(null = True, blank=True)
     Categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE)
 
     def __str__(self):
