@@ -8,5 +8,13 @@
 </head>
 <body>
     <h1>Seja bem vindo</h1>
+    <h2>Transacoes Cadastradas:<h2>
+    {% for t in transacao %}
+        <p>
+            <lu> {{t}} 
+                <li> {{t.descricao}} - {{t.data_transacao}} - {{t.valor}} - {{t.Categoria}}</li>
+            <lu>
+        </p>   
+    {% endfor %}
 </body>
 </html>
