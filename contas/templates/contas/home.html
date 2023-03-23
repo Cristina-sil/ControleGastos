@@ -12,7 +12,7 @@
     {% for t in transacao %}
         <p>
             <lu> {{t}} 
-                <li> {{t.descricao}} - {{t.data_transacao}} - {{t.valor}} - {{t.Categoria}}</li>
+                <li> <a href="{% url 'url_update' t.id %}">{{t.descricao}} - {{t.data_transacao}} - {{t.valor}} - {{t.Categoria}}</a></li>
             <lu>
         </p>   
     {% endfor %}

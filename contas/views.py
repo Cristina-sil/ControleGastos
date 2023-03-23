@@ -1,7 +1,8 @@
 import datetime
+from urllib import request
 
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import TransacaoForm
 from .models import Transacao
@@ -21,6 +22,19 @@ def cadastrarTransacao(request):
         return redirect('url_home')
     data['form'] = form
     return render(request, 'contas/form.html',data)
+
+def update(request,pk):
+    data = {}
+    transacao = get_object_or_404(Transacao, pk=pk) #Retorna o 404 caso não exista registro com o id passado
+    form = TransacaoForm(request.POST or None, instance=transacao)
+
+    if form.is_valid():
+        form.save()
+        return redirect('url_home')
+    
+    data['form'] = form 
+    return render(request, 'contas/form.html',data)
+
 
 
 
