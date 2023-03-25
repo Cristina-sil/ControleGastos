@@ -33,7 +33,16 @@ def update(request,pk):
         return redirect('url_home')
     
     data['form'] = form 
+    data['transacao'] = transacao
     return render(request, 'contas/form.html',data)
+
+def delete(request,pk):
+    transacao = Transacao.objects.get(pk=pk)
+    transacao.delete()
+    return redirect('url_home')
+
+
+
 
 
 
