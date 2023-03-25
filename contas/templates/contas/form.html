@@ -12,7 +12,10 @@
       {{form.as_p}}
 
       <button type='submti'>Salvar</button>
-      <button onclick="window.location.href='{% url 'url_delete' transacao.id %}'">Remover</button>
+      {% if transacao %}
+         <a href="{% url 'url_delete' transacao.id %}">Remover</a>
+      {% endif %}
+     
     </form>
 </body>
 </html>
