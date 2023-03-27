@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+</head>
+<body>
+    <h2>Categorias Cadastradas:<h2>
+    {% for c in categoria %}
+        <p>
+            <lu> {{c.nome}} <lu>
+        </p>   
+    {% endfor %}
+
+    <a href="{% url 'url_novaCategoria' %}">Nova categoria</a>
+    <button onclick="window.location.href='{% url 'url_home' %}'">Voltar</button>
+
+</body>
+</html>

@@ -4,8 +4,8 @@ from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import TransacaoForm
-from .models import Transacao
+from .forms import CategoriaForm, TransacaoForm
+from .models import Categoria, Transacao
 
 
 def home (request):
@@ -13,6 +13,12 @@ def home (request):
     return render(request, 'contas/home.html',context={
         'transacao': transacao,    
     })
+
+def principalCategorias(request):
+    categoria = Categoria.objects.all()
+    return render(request,'contas/categorias.html',context={
+        'categoria' : categoria
+    } )
 
 def cadastrarTransacao(request):
     data = {}
@@ -23,6 +29,15 @@ def cadastrarTransacao(request):
     data['form'] = form
     return render(request, 'contas/form.html',data)
 
+def cadastrarCategoria(request):
+    data = {}
+    form = CategoriaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('url_categorias')
+    data['form'] = form
+    return render(request,'contas/formCategoria.html',data)
+  
 def update(request,pk):
     data = {}
     transacao = get_object_or_404(Transacao, pk=pk) #Retorna o 404 caso não exista registro com o id passado
