@@ -1,5 +1,6 @@
 
-from contas.views import (cadastrarCategoria, cadastrarTransacao, delete, home,
+from contas.views import (atualizarCategoria, cadastrarCategoria,
+                          cadastrarTransacao, delete, home,
                           principalCategorias, update)
 from django.contrib import admin
 from django.urls import path
@@ -12,5 +13,7 @@ urlpatterns = [
     path('delete/<int:pk>',delete, name='url_delete'),
     path('categorias/',principalCategorias,name= 'url_categorias'),
     path('cadastrarCategoria',cadastrarCategoria,name='url_novaCategoria'),
+    path('atualizarCategoria/<int:pk>',atualizarCategoria,name='url_atualizarCategoria'),
+
 ]
 
