@@ -69,6 +69,10 @@ def delete(request,pk):
     transacao.delete()
     return redirect('url_home')
 
+def deleteCategoria(request,pk):
+    categoria = Categoria.objects.get(pk=pk)
+    categoria.delete()
+    return redirect('url_categorias')
 
 
 
