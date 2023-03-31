@@ -51,11 +51,23 @@ def update(request,pk):
     data['transacao'] = transacao
     return render(request, 'contas/form.html',data)
 
+def atualizarCategoria(request,pk):
+    data = {}
+    categoria = Categoria.objects.get(pk=pk)
+    form = CategoriaForm(request.POST or None, instance=categoria)
+    if form.is_valid():
+        form.save()
+        return redirect('url_categorias')
+    
+    data['form'] = form
+    data['categoria'] = categoria
+    return render(request,'contas/formCategoria.html',data)
+
+
 def delete(request,pk):
     transacao = Transacao.objects.get(pk=pk)
     transacao.delete()
     return redirect('url_home')
-
 
 
 
