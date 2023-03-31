@@ -10,7 +10,7 @@
     <h2>Categorias Cadastradas:<h2>
     {% for c in categoria %}
         <p>
-            <lu> {{c.nome}} <lu>
+            <lu> <a href="{% url 'url_atualizarCategoria' c.id %}"> {{c.nome}}</a> <lu>
         </p>   
     {% endfor %}
 
