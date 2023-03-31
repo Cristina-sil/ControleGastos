@@ -12,6 +12,10 @@
       {{form.as_p}}
       <button type='submti'>Salvar</button>
       <button onclick="window.location.href='{% url 'url_categorias' %}'">Voltar</button>
+
+      {% if categoria %}
+        <a href="{% url 'url_deleteCategoria' categoria.id %}">Remover</a>
+      {% endif %}
      
     </form>
 </body>
